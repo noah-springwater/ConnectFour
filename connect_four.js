@@ -1,15 +1,18 @@
-console.log('Let\'s do this thing');
-// $(document).ready(function() {
-//         var newBoard = new Board();
-//   newBoard.makeCells();
-//   newBoard.changeColorRed();
-//   newBoard.changeColorBlack();
-// });
+//console.log('Let\'s do this thing');
+
+window.onload = function() {
+  newBoard = new Board();
+  newBoard.checkWin();
+  newBoard.makeCells();
+  newBoard.changeColorRed();
+  newBoard.changeColorBlack();
+};
 
 var Cell = function() {
   this.value = null;
   this.isPlayable = true;
 };
+
 
 var Board = function() {
   this.gameboard = [];
@@ -34,16 +37,14 @@ var Board = function() {
 
   this.changeColorRed = function() {
     $('.cell').on('click', function() {
-      var index = this.id.split('-')
-      var cell = newBoard.gameboard[index[0]][index[1]]
+      index = this.id.split('-')
+      cell = newBoard.gameboard[index[0]][index[1]]
       if (newBoard.currentPlayer === 1 && cell.isPlayable) {
         cell.value = 'red'
         $(this).css('background-color', 'red')
         cell.isPlayable = false;
         newBoard.currentPlayer *= -1;
-        // console.log(cell);
-        // console.log(index);
-        // console.log(this);
+        newBoard.checkWin();
       }
     })
   };
@@ -58,8 +59,7 @@ var Board = function() {
         $(this).css('background-color', 'black')
         cell.isPlayable = false;
         newBoard.currentPlayer *= -1;
-        // console.log(cell);
-        // console.log(this);
+        newBoard.checkWin();
       }
     })
   }
@@ -85,7 +85,6 @@ var Board = function() {
     var red = 'rgb(255, 0, 0)';
 
     for (i = 0; i < row5.length; i++) {
-      console.log($(row5[i]).css('background-color'));
 
       if ($(row5[i]).css('background-color') === red && $(row5[i + 1]).css('background-color') === red && $(row5[i + 2]).css('background-color') === red & $(row5[i + 3]).css('background-color') === red) {
 
@@ -97,7 +96,6 @@ var Board = function() {
 
     };
     for (i = 0; i < row4.length; i++) {
-      console.log($(row4[i]).css('background-color'));
 
       if ($(row4[i]).css('background-color') === red && $(row4[i + 1]).css('background-color') === red && $(row4[i + 2]).css('background-color') === red & $(row4[i + 3]).css('background-color') === red) {
 
@@ -111,7 +109,6 @@ var Board = function() {
 
 
     for (i = 0; i < row3.length; i++) {
-      console.log($(row3[i]).css('background-color'));
 
       if ($(row3[i]).css('background-color') === red && $(row3[i + 1]).css('background-color') === red && $(row3[i + 2]).css('background-color') === red & $(row3[i + 3]).css('background-color') === red) {
 
@@ -124,7 +121,6 @@ var Board = function() {
     };
 
     for (i = 0; i < row2.length; i++) {
-      console.log($(row2[i]).css('background-color'));
 
       if ($(row2[i]).css('background-color') === red && $(row2[i + 1]).css('background-color') === red && $(row2[i + 2]).css('background-color') === red & $(row2[i + 3]).css('background-color') === red) {
 
@@ -137,7 +133,6 @@ var Board = function() {
     };
 
     for (i = 0; i < row1.length; i++) {
-      console.log($(row1[i]).css('background-color'));
 
       if ($(row1[i]).css('background-color') === red && $(row1[i + 1]).css('background-color') === red && $(row1[i + 2]).css('background-color') === red & $(row1[i + 3]).css('background-color') === red) {
 
@@ -150,7 +145,6 @@ var Board = function() {
     };
 
     for (i = 0; i < row0.length; i++) {
-      console.log($(row0[i]).css('background-color'));
 
       if ($(row0[i]).css('background-color') === red && $(row0[i + 1]).css('background-color') === red && $(row0[i + 2]).css('background-color') === red & $(row0[i + 3]).css('background-color') === red) {
 
@@ -163,7 +157,6 @@ var Board = function() {
     };
 
     for (i = 0; i < col0.length; i++) {
-      console.log($(col0[i]).css('background-color'));
 
       if ($(col0[i]).css('background-color') === red && $(col0[i + 1]).css('background-color') === red && $(col0[i + 2]).css('background-color') === red & $(col0[i + 3]).css('background-color') === red) {
 
@@ -176,7 +169,6 @@ var Board = function() {
     };
 
     for (i = 0; i < col1.length; i++) {
-      console.log($(col1[i]).css('background-color'));
 
       if ($(col1[i]).css('background-color') === red && $(col1[i + 1]).css('background-color') === red && $(col1[i + 2]).css('background-color') === red & $(col1[i + 3]).css('background-color') === red) {
 
@@ -189,7 +181,6 @@ var Board = function() {
     };
 
     for (i = 0; i < col2.length; i++) {
-      console.log($(col2[i]).css('background-color'));
 
       if ($(col2[i]).css('background-color') === red && $(col2[i + 1]).css('background-color') === red && $(col2[i + 2]).css('background-color') === red & $(col2[i + 3]).css('background-color') === red) {
 
@@ -201,7 +192,6 @@ var Board = function() {
 
     };
     for (i = 0; i < col3.length; i++) {
-      console.log($(col3[i]).css('background-color'));
 
       if ($(col3[i]).css('background-color') === red && $(col3[i + 1]).css('background-color') === red && $(col3[i + 2]).css('background-color') === red & $(col3[i + 3]).css('background-color') === red) {
 
@@ -213,7 +203,6 @@ var Board = function() {
 
     };
     for (i = 0; i < col4.length; i++) {
-      console.log($(col4[i]).css('background-color'));
 
       if ($(col4[i]).css('background-color') === red && $(col4[i + 1]).css('background-color') === red && $(col4[i + 2]).css('background-color') === red & $(col4[i + 3]).css('background-color') === red) {
 
@@ -225,7 +214,6 @@ var Board = function() {
 
     };
     for (i = 0; i < col5.length; i++) {
-      console.log($(col5[i]).css('background-color'));
 
       if ($(col5[i]).css('background-color') === red && $(col5[i + 1]).css('background-color') === red && $(col5[i + 2]).css('background-color') === red & $(col5[i + 3]).css('background-color') === red) {
 
@@ -237,7 +225,6 @@ var Board = function() {
 
     };
     for (i = 0; i < col6.length; i++) {
-      console.log($(col6[i]).css('background-color'));
 
       if ($(col6[i]).css('background-color') === red && $(col6[i + 1]).css('background-color') === red && $(col6[i + 2]).css('background-color') === red & $(col6[i + 3]).css('background-color') === red) {
 
