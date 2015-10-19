@@ -1,27 +1,26 @@
 console.log('Let\'s do this thing');
+// $(document).ready(function() {
+//         var newBoard = new Board();
+//   newBoard.makeCells();
+//   newBoard.changeColorRed();
+//   newBoard.changeColorBlack();
+// });
 
-
-//
-// - Grab each of the cells
-// - Create click event function
-
-//creates constructor for 1 cell
 var Cell = function() {
-  //set the value of the cell to 0
   this.value = null;
   this.isPlayable = true;
 };
 
-//constructor Board
 var Board = function() {
   this.gameboard = [];
   this.currentPlayer = 1;
+
   this.makeCells = function() {
-    for (var row = 0; row < 7; row++) {
+    for (var row = 0; row < 6; row++) {
       var rowArray = [];
       var rowDiv = $('<div>')
       rowDiv.addClass('row')
-      for (var col = 0; col < 8; col++) {
+      for (var col = 0; col < 7; col++) {
         rowArray.push(new Cell());
         var cellDiv = $('<div>');
         cellDiv.addClass('cell');
@@ -42,50 +41,213 @@ var Board = function() {
         $(this).css('background-color', 'red')
         cell.isPlayable = false;
         newBoard.currentPlayer *= -1;
-        console.log(cell)
-        console.log(this);
+        // console.log(cell);
+        // console.log(index);
+        // console.log(this);
       }
     })
   };
 
-  this.changeColorBlack = function(){
+  this.changeColorBlack = function() {
 
-  $('.cell').on('click', function(){
-    var index = this.id.split('-')
-
-  var cell = newBoard.gameboard[index[0]][index[1]]
-  if(newBoard.currentPlayer === -1 && cell.isPlayable){
-  cell.value = 'black'
-  $(this).css('background-color','black')
-  cell.isPlayable = false;
-  newBoard.currentPlayer *= -1;
-  console.log(cell)
-        }
-      })
-
-  };
-
-
-  var game {
-
-
-
+    $('.cell').on('click', function() {
+      var index = this.id.split('-')
+      var cell = newBoard.gameboard[index[0]][index[1]]
+      if (newBoard.currentPlayer === -1 && cell.isPlayable) {
+        cell.value = 'black'
+        $(this).css('background-color', 'black')
+        cell.isPlayable = false;
+        newBoard.currentPlayer *= -1;
+        // console.log(cell);
+        // console.log(this);
+      }
+    })
   }
 
-  //you have 3 values in cells, player, and winner
-  //cells are an array, currentPlayer is either 1 or -1, winner = false
-  //function 1 - setBoard()
-  //       will loop through and set all of the cells to the value of Cell constructor
-  //
 
-  //function 2 - makePlay()
-  //
-  //function 3 - checkWin()
+  this.checkWin = function() {
+
+    var row0 = $("div[id^='0']");
+    var row1 = $("div[id^='1']");
+    var row2 = $("div[id^='2']");
+    var row3 = $("div[id^='3']");
+    var row4 = $("div[id^='4']");
+    var row5 = $("div[id^='5']");
+    var col0 = $("[id*='-0']");
+    var col1 = $("[id*='-1']");
+    var col2 = $("[id*='-2']");
+    var col3 = $("[id*='-3']");
+    var col4 = $("[id*='-4']");
+    var col5 = $("[id*='-5']");
+    var col6 = $("[id*='-6']");
+
+    var black = 'rgb(0, 0, 0)'
+    var red = 'rgb(255, 0, 0)';
+
+    for (i = 0; i < row5.length; i++) {
+      console.log($(row5[i]).css('background-color'));
+
+      if ($(row5[i]).css('background-color') === red && $(row5[i + 1]).css('background-color') === red && $(row5[i + 2]).css('background-color') === red & $(row5[i + 3]).css('background-color') === red) {
+
+        alert('Color Red has Won!')
+
+      } else if ($(row5[i]).css('background-color') === black && $(row5[i + 1]).css('background-color') === black && $(row5[i + 2]).css('background-color') === black & $(row5[i + 3]).css('background-color') === black) {
+        alert('Color Black has Won!')
+      }
+
+    };
+    for (i = 0; i < row4.length; i++) {
+      console.log($(row4[i]).css('background-color'));
+
+      if ($(row4[i]).css('background-color') === red && $(row4[i + 1]).css('background-color') === red && $(row4[i + 2]).css('background-color') === red & $(row4[i + 3]).css('background-color') === red) {
+
+        alert('Color Red has Won!')
+
+      } else if ($(row4[i]).css('background-color') === black && $(row4[i + 1]).css('background-color') === black && $(row4[i + 2]).css('background-color') === black & $(row4[i + 3]).css('background-color') === black) {
+        alert('Color Black has Won!')
+      }
+
+    };
+
+
+    for (i = 0; i < row3.length; i++) {
+      console.log($(row3[i]).css('background-color'));
+
+      if ($(row3[i]).css('background-color') === red && $(row3[i + 1]).css('background-color') === red && $(row3[i + 2]).css('background-color') === red & $(row3[i + 3]).css('background-color') === red) {
+
+        alert('Color Red has Won!')
+
+      } else if ($(row3[i]).css('background-color') === black && $(row3[i + 1]).css('background-color') === black && $(row3[i + 2]).css('background-color') === black & $(row3[i + 3]).css('background-color') === black) {
+        alert('Color Black has Won!')
+      }
+
+    };
+
+    for (i = 0; i < row2.length; i++) {
+      console.log($(row2[i]).css('background-color'));
+
+      if ($(row2[i]).css('background-color') === red && $(row2[i + 1]).css('background-color') === red && $(row2[i + 2]).css('background-color') === red & $(row2[i + 3]).css('background-color') === red) {
+
+        alert('Color Red has Won!')
+
+      } else if ($(row2[i]).css('background-color') === black && $(row2[i + 1]).css('background-color') === black && $(row2[i + 2]).css('background-color') === black & $(row2[i + 3]).css('background-color') === black) {
+        alert('Color Black has Won!')
+      }
+
+    };
+
+    for (i = 0; i < row1.length; i++) {
+      console.log($(row1[i]).css('background-color'));
+
+      if ($(row1[i]).css('background-color') === red && $(row1[i + 1]).css('background-color') === red && $(row1[i + 2]).css('background-color') === red & $(row1[i + 3]).css('background-color') === red) {
+
+        alert('Color Red has Won!')
+
+      } else if ($(row1[i]).css('background-color') === black && $(row1[i + 1]).css('background-color') === black && $(row1[i + 2]).css('background-color') === black & $(row1[i + 3]).css('background-color') === black) {
+        alert('Color Black has Won!')
+      }
+
+    };
+
+    for (i = 0; i < row0.length; i++) {
+      console.log($(row0[i]).css('background-color'));
+
+      if ($(row0[i]).css('background-color') === red && $(row0[i + 1]).css('background-color') === red && $(row0[i + 2]).css('background-color') === red & $(row0[i + 3]).css('background-color') === red) {
+
+        alert('Color Red has Won!')
+
+      } else if ($(row0[i]).css('background-color') === black && $(row0[i + 1]).css('background-color') === black && $(row0[i + 2]).css('background-color') === black & $(row0[i + 3]).css('background-color') === black) {
+        alert('Color Black has Won!')
+      }
+
+    };
+
+    for (i = 0; i < col0.length; i++) {
+      console.log($(col0[i]).css('background-color'));
+
+      if ($(col0[i]).css('background-color') === red && $(col0[i + 1]).css('background-color') === red && $(col0[i + 2]).css('background-color') === red & $(col0[i + 3]).css('background-color') === red) {
+
+        alert('Color Red has Won!')
+
+      } else if ($(col0[i]).css('background-color') === black && $(col0[i + 1]).css('background-color') === black && $(col0[i + 2]).css('background-color') === black & $(col0[i + 3]).css('background-color') === black) {
+        alert('Color Black has Won!')
+      }
+
+    };
+
+    for (i = 0; i < col1.length; i++) {
+      console.log($(col1[i]).css('background-color'));
+
+      if ($(col1[i]).css('background-color') === red && $(col1[i + 1]).css('background-color') === red && $(col1[i + 2]).css('background-color') === red & $(col1[i + 3]).css('background-color') === red) {
+
+        alert('Color Red has Won!')
+
+      } else if ($(col1[i]).css('background-color') === black && $(col1[i + 1]).css('background-color') === black && $(col1[i + 2]).css('background-color') === black & $(col1[i + 3]).css('background-color') === black) {
+        alert('Color Black has Won!')
+      }
+
+    };
+
+    for (i = 0; i < col2.length; i++) {
+      console.log($(col2[i]).css('background-color'));
+
+      if ($(col2[i]).css('background-color') === red && $(col2[i + 1]).css('background-color') === red && $(col2[i + 2]).css('background-color') === red & $(col2[i + 3]).css('background-color') === red) {
+
+        alert('Color Red has Won!')
+
+      } else if ($(col2[i]).css('background-color') === black && $(col2[i + 1]).css('background-color') === black && $(col2[i + 2]).css('background-color') === black & $(col2[i + 3]).css('background-color') === black) {
+        alert('Color Black has Won!')
+      }
+
+    };
+    for (i = 0; i < col3.length; i++) {
+      console.log($(col3[i]).css('background-color'));
+
+      if ($(col3[i]).css('background-color') === red && $(col3[i + 1]).css('background-color') === red && $(col3[i + 2]).css('background-color') === red & $(col3[i + 3]).css('background-color') === red) {
+
+        alert('Color Red has Won!')
+
+      } else if ($(col3[i]).css('background-color') === black && $(col3[i + 1]).css('background-color') === black && $(col3[i + 2]).css('background-color') === black & $(col3[i + 3]).css('background-color') === black) {
+        alert('Color Black has Won!')
+      }
+
+    };
+    for (i = 0; i < col4.length; i++) {
+      console.log($(col4[i]).css('background-color'));
+
+      if ($(col4[i]).css('background-color') === red && $(col4[i + 1]).css('background-color') === red && $(col4[i + 2]).css('background-color') === red & $(col4[i + 3]).css('background-color') === red) {
+
+        alert('Color Red has Won!')
+
+      } else if ($(col4[i]).css('background-color') === black && $(col4[i + 1]).css('background-color') === black && $(col4[i + 2]).css('background-color') === black & $(col4[i + 3]).css('background-color') === black) {
+        alert('Color Black has Won!')
+      }
+
+    };
+    for (i = 0; i < col5.length; i++) {
+      console.log($(col5[i]).css('background-color'));
+
+      if ($(col5[i]).css('background-color') === red && $(col5[i + 1]).css('background-color') === red && $(col5[i + 2]).css('background-color') === red & $(col5[i + 3]).css('background-color') === red) {
+
+        alert('Color Red has Won!')
+
+      } else if ($(col5[i]).css('background-color') === black && $(col5[i + 1]).css('background-color') === black && $(col5[i + 2]).css('background-color') === black & $(col5[i + 3]).css('background-color') === black) {
+        alert('Color Black has Won!')
+      }
+
+    };
+    for (i = 0; i < col6.length; i++) {
+      console.log($(col6[i]).css('background-color'));
+
+      if ($(col6[i]).css('background-color') === red && $(col6[i + 1]).css('background-color') === red && $(col6[i + 2]).css('background-color') === red & $(col6[i + 3]).css('background-color') === red) {
+
+        alert('Color Red has Won!')
+
+      } else if ($(col6[i]).css('background-color') === black && $(col6[i + 1]).css('background-color') === black && $(col6[i + 2]).css('background-color') === black & $(col6[i + 3]).css('background-color') === black) {
+        alert('Color Black has Won!')
+      }
+
+    };
+
+  }
 };
-
-
-//object literal game
-// var game = {
-//
-//
-// };
